@@ -1,0 +1,134 @@
+﻿@model BlckBook.Models.School
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="breadcome-heading">
+                                <form role="search" class="sr-input-func">
+                                    <input type="text" placeholder="Search..." class="search-int form-control">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <ul class="breadcome-menu">
+                                <li>
+                                    <a href="#">School</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li>
+                                    <span class="bread-blod">Add new</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="sparkline10-list mg-tb-30 responsive-mg-t-0 table-mg-t-pro-n dk-res-t-pro-0 nk-ds-n-pro-t-0">
+                <div class="sparkline10-hd">
+                    <div class="main-sparkline10-hd">
+                        <h3 class="line-head"><i class="fa fa-university"></i> Register School</h3>
+                    </div>
+                </div>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8 mb-20">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-md-4">
+                            <label asp-for="SchoolContact.TelNo" class="control-label"></label>
+                            <input asp-for="SchoolContact.TelNo" class="form-control" />
+                            <span asp-validation-for="SchoolContact.TelNo" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="SchoolContact.FaxNo" class="control-label"></label>
+                            <input asp-for="SchoolContact.FaxNo" class="form-control" />
+                            <span asp-validation-for="SchoolContact.FaxNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-md-4">
+                            <label asp-for="SchoolContact.Email" class="control-label"></label>
+                            <input asp-for="SchoolContact.Email" class="form-control" />
+                            <span asp-validation-for="SchoolContact.Email" class="text-danger"></span>
+                        </div>
+                        <div class="chosen-select-single col-md-4">
+                            <label asp-for="SchoolAddress.Province" class="control-label"></label>
+                            @Html.DropDownListFor(model => model.SchoolAddress.Province, new[]{
+                            new SelectListItem(){Text="KwaZulu Natal",Value="KwaZulu Natal"},
+                            new SelectListItem(){Text="Eastern Cape",Value="Eastern Cape"},
+                            new SelectListItem(){Text="Free State",Value="Free State"},
+                            new SelectListItem(){Text="Gauteng",Value="Gauteng"},
+                            new SelectListItem(){Text="Limpopo",Value="Limpopo"},
+                            new SelectListItem(){Text="Mpumalanga",Value="Mpumalanga"},
+                            new SelectListItem(){Text="Northern Cape",Value="Western Cape"},
+                            new SelectListItem(){Text="North West", Value="North West"},
+                            new SelectListItem(){Text="Western Cape", Value="Western Cape"},
+                            }, "Select Province", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="SchoolAddress.Province" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mb-20">
+                            <label asp-for="SchoolAddress.Street" class="control-label"></label>
+                            <input asp-for="SchoolAddress.Street" class="form-control" />
+                            <span asp-validation-for="SchoolAddress.Street" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-md-4">
+                            <label asp-for="SchoolAddress.Suburb" class="control-label"></label>
+                            <input asp-for="SchoolAddress.Suburb" class="form-control" />
+                            <span asp-validation-for="SchoolAddress.Suburb" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="SchoolAddress.City" class="control-label"></label>
+                            <input asp-for="SchoolAddress.City" class="form-control" />
+                            <span asp-validation-for="SchoolAddress.City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mb-20">
+                            <label asp-for="SchoolAddress.Code" class="control-label"></label>
+                            <input asp-for="SchoolAddress.Code" class="form-control" />
+                            <span asp-validation-for="SchoolAddress.Code" class="text-danger"></span>
+                        </div>
+                    </div>
+                                         
+                    <br />
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="submit" class="btn btn-primary icon-btn" value="Register" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

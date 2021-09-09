@@ -1,0 +1,165 @@
+﻿@model BlckBook.Models.Class
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Mobile Menu end -->
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list single-page-breadcome">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="breadcome-heading">
+                                <form role="search" class="sr-input-func">
+                                    <input type="text" placeholder="Search..." class="search-int form-control">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <ul class="breadcome-menu">
+                                <li>
+                                    <a href="#">Home</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li>
+                                    <span class="bread-blod">Add Classes</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Single pro tab review Start-->
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-payment-inner-st">
+                    <ul id="myTabedu1" class="tab-review-design">
+                        <li class="active"><a href="#description">Courses Details</a></li>
+                        <li><a href="#reviews"> Acount Information</a></li>
+                        <li><a href="#INFORMATION">Social Information</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content custom-product-edit">
+                        <div class="product-tab-list tab-pane fade active in" id="description">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            @using (Html.BeginForm())
+                                            {
+                                                <h3 class="line-head"><i class="fa fa-edit"></i></h3>
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-20">
+                                                        <label>Stream</label>
+                                                        @Html.DropDownListFor(model => model.Stream, ViewBag.streamlist as List<SelectListItem>, "--Choose Stream--", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Stream, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-6 mb-20">
+                                                        <label>Grade</label>
+                                                        @Html.EditorFor(model => model.Grade, new { htmlAttributes = new { placeholder = "e.g 10", @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-6 mb-20">
+                                                        <label>Class Group</label>
+                                                        @Html.EditorFor(model => model.Group, new { htmlAttributes = new { placeholder = "e.g A", @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Group, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-6 mb-20">
+                                                        <div class="form-group form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.CheckBox("another", true, new { @class = "form-check-input" }) Add another Class?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <input type="submit" class="btn btn-primary icon-btn" value="Submit" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="reviews">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="devit-card-custom">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control" placeholder="Phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" placeholder="Password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                                    </div>
+                                                    <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="devit-card-custom">
+                                                    <div class="form-group">
+                                                        <input type="url" class="form-control" placeholder="Facebook URL">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="url" class="form-control" placeholder="Twitter URL">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="url" class="form-control" placeholder="Google Plus">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="url" class="form-control" placeholder="Linkedin URL">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
